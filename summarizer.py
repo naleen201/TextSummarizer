@@ -58,7 +58,7 @@ def build_similarity_matrix(sentences,stop_words):
 
 
 # Generate and return text summary
-def generate_summary(text,top_n):
+def generate_summary(text, summary_size):
     
     nltk.download('stopwords')
     nltk.download('punkt')
@@ -80,6 +80,7 @@ def generate_summary(text,top_n):
     ranked_sentences = sorted(((scores[i],s) for i,s in enumerate(sentences)),reverse=True)
     
     # Step 5: get the top n number of sentences based on rank    
+    top_n = int((summary_size / 100) * len(sentences))
     for i in range(top_n):
         summarize_text.append(ranked_sentences[i][1])
     

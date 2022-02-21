@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, abort
+from flask import Flask, jsonify, request, abort, render_template
 from flask_restful import Resource, Api
 from marshmallow import Schema, fields
 from summarizer import *
@@ -26,7 +26,7 @@ api.add_resource(Summarize, "/summarize")
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
