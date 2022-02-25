@@ -1,29 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container" style="margin-top: 8%;">
     <form>
         <label class="labels">Input Text</label><br>
         <div class="textarea_style">
-            <textarea class="textarea" id="input_textarea" onkeyup="charCount();" name="textarea_description" rows="23" cols="80" maxlength="10000" minlength="3" placeholder="Enter the text here..."></textarea>
+            <textarea class="textarea" id="input_textarea" name="textarea_description" rows="23" cols="80" minlength="3" placeholder="Enter the text here..."></textarea>
         </div>
-        <span class="textarea_count">0/10000 (Max Character 10000)</span>
     </form>
 </div>
-<div>
-    <label for="summary_size">Required Summary Size (As a percentage of original text):</label>
-    <input type="range" id="summary_size" name="summary_size" min="0" max="100">
-</div>
-<div>
-    <input type="button" onclick="getSummary()" value="submit">
+<div class="size_input">
+    <label class="labels" for="summary_size">Summary Size:</label>
+    <input type="range" class="summary_size" id="summary_size" name="summary_size" min="0" max="100">
+    <input type="button" onclick="getSummary()" value="Summarize">
 </div>
 <div class="container">
     <form>
         <label class="labels">Summary</label><br>
         <div class="textarea_style">
-            <textarea class="textarea" id="output_textarea" onkeyup="charCount();" name="textarea_description" rows="23" cols="80" maxlength="10000" minlength="3" placeholder="Enter the text here..."></textarea>
+            <textarea class="textarea" id="output_textarea" name="textarea_description" rows="23" cols="80" minlength="3" placeholder="Enter the text here..."></textarea>
         </div>
-        <span class="textarea_count">0/10000 (Max Character 10000)</span>
     </form>
 </div>
 {% endblock %}

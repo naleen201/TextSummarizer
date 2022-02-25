@@ -69,3 +69,36 @@ span.textarea_count{
 	font-size: 10px;
 	color:#EC0F0F;
 }
+
+.size_input {
+	margin-top: 4%;
+	margin-left: 25%;
+	width: 620px;
+}
+
+.summary_size {
+	width: 70%;
+}
+
+.navbar {
+	overflow: hidden;
+	background-color: #333;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	margin-left: -8px;
+  }
+  
+  .navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+  }
+  
+  .navbar a:hover {
+	background: #ddd;
+	color: black;
+  }

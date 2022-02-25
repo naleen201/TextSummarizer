@@ -1,8 +1,3 @@
-function charCount() {
-    var element=document.getElementById('textarea').value.length;
-    document.getElementById('textarea_count').innerHTML=element+"/10000 (Max Character 10000).";
-}
-
 function getSummary() {
     var input_text = document.getElementById("input_textarea").value;
     var summary_size = document.getElementById("summary_size").value;
