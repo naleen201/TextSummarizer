@@ -3,6 +3,7 @@ from flask_restful import Resource, Api
 from marshmallow import Schema, fields
 from summarizer import *
 
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -22,11 +23,14 @@ class Summarize(Resource):
         summary, original_text_length = generate_summary(text, required_summary_length)
         return jsonify({"summary" : summary, "original_text_length" : original_text_length})
 
+
+
 api.add_resource(Summarize, "/summarize")
 
 @app.route("/")
 def hello_world():
     return render_template("index.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
