@@ -9,6 +9,10 @@
         </div>
     </form>
 </div>
+<div id="file_input" class="file_input">
+    <label class="labels" for="inputfile">Or Upload a Text File:</label>
+    <input type="file" name="inputfile" id="inputfile" class="inputfile">
+</div>
 <div class="size_input">
     <label class="labels" for="summary_size">Summary Size:</label>
     <input type="range" class="summary_size" id="summary_size" name="summary_size" min="0" max="100">
@@ -18,8 +22,11 @@
     <form>
         <label class="labels">Summary</label><br>
         <div class="textarea_style">
-            <textarea class="textarea" id="output_textarea" name="textarea_description" rows="23" cols="80" minlength="3" placeholder="Enter the text here..."></textarea>
+            <textarea readonly class="textarea" id="output_textarea" name="textarea_description" rows="23" cols="80" minlength="3" placeholder="Your summary will appear here..."></textarea>
         </div>
     </form>
+</div>
+<div id="file_download" class="file_download">
+    <input type="button" id="download_button" value="Download Summary"/>
 </div>
 {% endblock %}

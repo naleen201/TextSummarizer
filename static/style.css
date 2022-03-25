@@ -76,6 +76,16 @@ span.textarea_count{
 	width: 620px;
 }
 
+.file_input {
+	margin-top: 4%;
+	margin-left: 25%;
+}
+
+.file_download {
+	margin-top: 2%;
+	margin-left: 25%;
+}
+
 .summary_size {
 	width: 70%;
 }
