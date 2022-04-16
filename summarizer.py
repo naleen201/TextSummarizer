@@ -88,9 +88,29 @@ def generate_summary(text, summary_size):
     summarize_text.sort(key=lambda x : sentences.index(x))
     
     # Step 7 : outpur the summarized version
-    return " ".join(summarize_text),len(sentences)
+    return " ".join(summarize_text)
 
 
+
+
+def summarize(text, summary_size):
+    CHUNK_SIZE = 10000
+    if len(text) <= CHUNK_SIZE:
+        return generate_summary(text, summary_size)
+    sentences = sent_tokenize(text)
+    summary = ""
+    chunk = ""
+    curr_length = 0
+    for sentence in sentences:
+        if curr_length > CHUNK_SIZE:
+            summary += generate_summary(chunk, summary_size) + " "
+            curr_length = 0
+            chunk = ""
+        chunk += sentence + " "
+        curr_length += len(sentence)
+
+    summary = summary.strip()
+    return summary
 
 
 

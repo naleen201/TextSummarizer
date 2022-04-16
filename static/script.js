@@ -24,7 +24,16 @@ function getSummary() {
 }
 
 
-
+function extractText() {
+    var url = document.getElementById("inputurl").value;
+    fetch('scrape-text?' + new URLSearchParams({
+        URL: url
+    }))
+    .then(response => response.json())
+    .then((data) => {
+        document.getElementById("input_textarea").value = data["scraped_text"];
+    })
+}
 
 
 function download(filename, text) {
