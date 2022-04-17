@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;600&display=swap" rel="stylesheet">
     <title>Summarizer</title>
 </head>
+
 <body>
     <div class="navbar">
         <a href="">Summarizer</a>
     </div>
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
+    <footer id="end">
+        <div id="endblock">
+            <p>Created By:</p>
+            <ul id="nameList">
+                <li>Rohit Parimoo</li>
+                <li>Naleen</li>
+                <li>Rohit Sharma</li>
+                <li>Nimish Jain</li>
+            </ul>
+        </div>
+    </footer>
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
+
 </html>

@@ -23,9 +23,10 @@
     <form>
         <label class="labels">Summary:</label><br>
         <textarea readonly class="textarea" id="output_textarea" name="textarea_description" minlength="3" placeholder="Your summary will appear here..."></textarea>
+        <div id="file_download" class="file_download">
+            <input type="button" id="download_button" value="Download Summary" />
+        </div>
     </form>
 </div>
-<div id="file_download" class="file_download">
-    <input type="button" id="download_button" value="Download Summary" />
-</div>
+
 {% endblock %}
