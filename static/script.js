@@ -1,3 +1,17 @@
+const loader = document.getElementById("loading");
+
+function displayLoading() {
+    loader.classList.add("display");
+}
+
+function hideLoading() {
+    loader.classList.remove("display");
+}
+
+function updateSlider() {
+    const sliderValue = document.getElementById("summary_size").value;
+    document.getElementById("sliderLabel").innerHTML = `Summary Size: ${sliderValue}%`;
+}
 document.getElementById('inputfile')
     .addEventListener('change', function() {
 
@@ -13,12 +27,14 @@ document.getElementById('inputfile')
 function getSummary() {
     var input_text = document.getElementById("input_textarea").value;
     var summary_size = document.getElementById("summary_size").value;
+    displayLoading();
     fetch('summarize?' + new URLSearchParams({
             text: input_text,
             required_summary_length: summary_size,
         }))
         .then(response => response.json())
         .then((data) => {
+            hideLoading();
             document.getElementById("output_textarea").value = data["summary"];
         })
 }
@@ -31,7 +47,10 @@ function extractText() {
     }))
     .then(response => response.json())
     .then((data) => {
-        document.getElementById("input_textarea").value = data["scraped_text"];
+        if(data["scraped_text"] === "Invalid URL")
+            alert("Please enter a valid URL.");
+        else
+            document.getElementById("input_textarea").value = data["scraped_text"];
     })
 }
 
@@ -48,6 +67,8 @@ function download(filename, text) {
 
     document.body.removeChild(element);
 }
+
+
 
 // Start file download.
 document.getElementById("download_button").addEventListener("click", function() {

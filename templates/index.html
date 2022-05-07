@@ -5,7 +5,7 @@
         <textarea class="textarea" id="input_textarea" name="textarea_description" minlength="3" placeholder="Enter the text here..."></textarea>
         <div id="file_input" class="file_input">
             <label class="labels" for="inputfile" id="ugh">Or Upload a Text File: </label>
-            <input type="file" name="inputfile" id="inputfile" class="inputfile">
+            <input type="file" name="inputfile" id="inputfile" class="inputfile" accept=".txt">
         </div>
         <div id="url_input" class="url_input">
             <label class="labels" for="inputurl" id="ugh">Or Enter the Article Link: </label>
@@ -14,10 +14,12 @@
         </div>
     </form>
 </div>
+
 <div class="size_input">
-    <label class="sliderLabel" for="summary_size">Summary Size:</label>
-    <input type="range" class="summary_size" id="summary_size" name="summary_size" min="0" max="100">
+    <label id="sliderLabel" class="sliderLabel" for="summary_size">Summary Size: 50%</label>
+    <input type="range" class="summary_size" id="summary_size" name="summary_size" min="0" max="100" oninput="updateSlider()">
     <input type="button" onclick="getSummary()" value="Summarize" id="summaryBtn">
+    <div id="loading"></div>
 </div>
 <div class="container">
     <form>
