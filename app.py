@@ -10,23 +10,25 @@ import requests
 app = Flask(__name__)
 api = Api(app)
 
-class SummarizeQuerySchema(Schema):
+class SummarizeRequestSchema(Schema):
     text = fields.Str(required=True)
     required_summary_length = fields.Int(required=True)
 
 class ScrapeQuerySchema(Schema):
     URL = fields.Str(required=True)
 
-schema = SummarizeQuerySchema()
+schema = SummarizeRequestSchema()
 scrape_schema = ScrapeQuerySchema()
 
 class Summarize(Resource):
-    def get(self):
-        errors = schema.validate(request.args)
-        if errors:
-            abort(400, str(errors))
-        text = request.args["text"]
-        required_summary_length = int(request.args["required_summary_length"])
+    def post(self):
+        body = request.json
+        try:
+            schema.load(body)
+        except ValidationError as err:
+            abort(400, err)
+        text = body["text"]
+        required_summary_length = int(body["required_summary_length"])
         summary = summarize(text, required_summary_length)
         return jsonify({"summary" : summary})
 

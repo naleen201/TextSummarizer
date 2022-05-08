@@ -24,21 +24,27 @@ document.getElementById('inputfile')
         fr.readAsText(this.files[0]);
     })
 
+
 function getSummary() {
     var input_text = document.getElementById("input_textarea").value;
     var summary_size = document.getElementById("summary_size").value;
     displayLoading();
-    fetch('summarize?' + new URLSearchParams({
+    fetch("summarize", {
+        method: "POST",
+        body: JSON.stringify({
             text: input_text,
-            required_summary_length: summary_size,
-        }))
+            required_summary_length: summary_size
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
         .then(response => response.json())
         .then((data) => {
             hideLoading();
             document.getElementById("output_textarea").value = data["summary"];
         })
 }
-
 
 function extractText() {
     var url = document.getElementById("inputurl").value;
